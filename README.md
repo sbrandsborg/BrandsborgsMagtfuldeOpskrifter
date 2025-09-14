@@ -10,3 +10,4 @@ Hver opskrift ligger i mappen `opskrifter` og versioneres løbende med Git.
 
 ## Indhold
 - [Lasagne med Bolognese, Bechamel og Panko](opskrifter/lasagne.md)
+- [Mynte-lime sodavand (Ebeltoft-inspireret) – 5 liter](opskrifter/mynte-lime-sodavand.md)
