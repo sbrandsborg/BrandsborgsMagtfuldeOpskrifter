@@ -61,70 +61,85 @@
   themeButton?.addEventListener('click', cycleMode);
 
   // Ingredient toggles per opskriftsside
-  const recipeId = document.body?.dataset?.recipeId;
-  if (!recipeId) return;
+  const initIngredientLists = (recipeId) => {
+    if (!recipeId) return false;
 
-  const ingredientLists = document.querySelectorAll('.ingredients');
-  if (!ingredientLists.length) return;
+    const ingredientLists = document.querySelectorAll('.ingredients');
+    if (!ingredientLists.length) return false;
 
-  const listStorageKey = `bm-ingredients-${recipeId}`;
+    const listStorageKey = `bm-ingredients-${recipeId}`;
 
-  const loadState = () => {
-    try {
-      const stored = localStorage.getItem(listStorageKey);
-      if (!stored) return new Set();
-      return new Set(JSON.parse(stored));
-    } catch (error) {
-      console.error('Kunne ikke læse ingrediensstatus', error);
-      return new Set();
-    }
-  };
+    const loadState = () => {
+      try {
+        const stored = localStorage.getItem(listStorageKey);
+        if (!stored) return new Set();
+        return new Set(JSON.parse(stored));
+      } catch (error) {
+        console.error('Kunne ikke læse ingrediensstatus', error);
+        return new Set();
+      }
+    };
 
-  const saveState = (set) => {
-    try {
-      localStorage.setItem(listStorageKey, JSON.stringify([...set]));
-    } catch (error) {
-      console.error('Kunne ikke gemme ingrediensstatus', error);
-    }
-  };
+    const saveState = (set) => {
+      try {
+        localStorage.setItem(listStorageKey, JSON.stringify([...set]));
+      } catch (error) {
+        console.error('Kunne ikke gemme ingrediensstatus', error);
+      }
+    };
 
-  const checked = loadState();
+    const checked = loadState();
 
-  ingredientLists.forEach((list) => {
-    list.querySelectorAll('li').forEach((item, index) => {
-      const key = `${index}-${item.textContent.trim()}`;
-      item.dataset.key = key;
-      item.setAttribute('role', 'checkbox');
-      item.setAttribute('tabindex', '0');
-      const isChecked = checked.has(key);
-      item.classList.toggle('is-checked', isChecked);
-      item.setAttribute('aria-checked', isChecked ? 'true' : 'false');
+    ingredientLists.forEach((list) => {
+      list.querySelectorAll('li').forEach((item, index) => {
+        const key = `${index}-${item.textContent.trim()}`;
+        item.dataset.key = key;
+        item.setAttribute('role', 'checkbox');
+        item.setAttribute('tabindex', '0');
+        const isChecked = checked.has(key);
+        item.classList.toggle('is-checked', isChecked);
+        item.setAttribute('aria-checked', isChecked ? 'true' : 'false');
+      });
     });
-  });
 
-  const toggleItem = (item) => {
-    const key = item.dataset.key;
-    if (!key) return;
-    const isChecked = item.classList.toggle('is-checked');
-    item.setAttribute('aria-checked', isChecked ? 'true' : 'false');
-    if (isChecked) {
-      checked.add(key);
-    } else {
-      checked.delete(key);
-    }
-    saveState(checked);
+    const toggleItem = (item) => {
+      const key = item.dataset.key;
+      if (!key) return;
+      const isChecked = item.classList.toggle('is-checked');
+      item.setAttribute('aria-checked', isChecked ? 'true' : 'false');
+      if (isChecked) {
+        checked.add(key);
+      } else {
+        checked.delete(key);
+      }
+      saveState(checked);
+    };
+
+    const handleActivation = (event) => {
+      const target = event.target.closest('li');
+      if (!target || !event.currentTarget.contains(target)) return;
+      if (event.type === 'keydown' && !['Enter', ' '].includes(event.key)) return;
+      event.preventDefault();
+      toggleItem(target);
+    };
+
+    ingredientLists.forEach((list) => {
+      list.addEventListener('click', handleActivation);
+      list.addEventListener('keydown', handleActivation);
+    });
+
+    return true;
   };
 
-  const handleActivation = (event) => {
-    const target = event.target.closest('li');
-    if (!target || !event.currentTarget.contains(target)) return;
-    if (event.type === 'keydown' && !['Enter', ' '].includes(event.key)) return;
-    event.preventDefault();
-    toggleItem(target);
-  };
+  const recipeId = document.body?.dataset?.recipeId;
+  if (recipeId) {
+    initIngredientLists(recipeId);
+  }
 
-  ingredientLists.forEach((list) => {
-    list.addEventListener('click', handleActivation);
-    list.addEventListener('keydown', handleActivation);
-  });
+  window.BMRecipeUtils = window.BMRecipeUtils || {};
+  window.BMRecipeUtils.initIngredients = (id) => {
+    const recipeKey = id ?? document.body?.dataset?.recipeId;
+    if (!recipeKey) return;
+    initIngredientLists(recipeKey);
+  };
 })();

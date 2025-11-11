@@ -1,5 +1,23 @@
-# Konfiteret andelår sous vide
-
+---
+{
+  "slug": "konfiteret-andelaar-sousvide",
+  "title": "Konfiteret andelår sous vide",
+  "subtitle": "Perfekt mørt kød og knasende skind",
+  "description": "Silkeblødt andekød tilberedt i krydderet fedt og afsluttet med sprødt skind.",
+  "category": "Langtid",
+  "heroEmoji": "🦆",
+  "highlights": [
+    "⏳ 36 timers tilberedning",
+    "🔥 Sprødstegt finish",
+    "🍷 Perfekt til gæster"
+  ],
+  "meta": [
+    { "icon": "⏱️", "label": "Aktiv tid", "value": "30 minutter" },
+    { "icon": "🌡️", "label": "Temperatur", "value": "68 °C" },
+    { "icon": "🍽️", "label": "Serverer", "value": "2 personer" }
+  ],
+  "intro": "Denne metode giver dig møre andelår med dyb krydderi-smag, og en afsluttende sprød stegning giver den perfekte tekstur."
+}
 ---
 
 ## 🧾 Ingredienser pr. pose (2 lår)

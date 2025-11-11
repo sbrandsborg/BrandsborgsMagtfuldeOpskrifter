@@ -1,12 +1,19 @@
 # BrandsborgsMagtfuldeOpskrifter
 
 Dette repository indeholder en samling af mine favoritopskrifter.
-Hver opskrift ligger i mappen `opskrifter` og versioneres løbende med Git.
+Hver opskrift ligger i mappen `opskrifter` som Markdown med JSON front matter og versioneres løbende med Git.
 
 ## Sådan kommer du i gang
 1. Klon dette repo.
 2. Tag et kig i mappen `opskrifter` for at se de seneste opskrifter.
-3. Brug Git tags til at holde styr på versioner af opskrifterne.
+3. Opskrifterne vises automatisk i webinterfacet via manifestet `opskrifter/manifest.json`.
+4. Brug Git tags til at holde styr på versioner af opskrifterne.
+
+## Tilføj en ny opskrift
+1. Kopiér `opskrifter/skabelon.md` og navngiv filen efter opskriftens slug.
+2. Udfyld JSON-front matter med titel, kategori, highlights mv.
+3. Skriv selve opskriften som Markdown under front matter.
+4. Tilføj opskriften til `opskrifter/manifest.json`, så den vises på forsiden.
 
 ## Indhold
 - [Lasagne med Bolognese, Bechamel og Panko](opskrifter/lasagne.md)

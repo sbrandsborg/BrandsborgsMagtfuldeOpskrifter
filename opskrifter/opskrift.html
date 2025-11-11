@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="da" data-theme="auto">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Opskrift · Brandsborgs Magtfulde Opskrifter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/styles.css" />
+</head>
+<body class="recipe-page">
+  <header class="site-header">
+    <div class="brand">
+      <span class="logo" aria-hidden="true">🍽️</span>
+      <div>
+        <p class="brand-title">Brandsborgs Magtfulde Opskrifter</p>
+        <p class="brand-subtitle" id="recipe-subtitle">Personlige favoritter til alle lejligheder</p>
+      </div>
+    </div>
+    <button class="theme-toggle" type="button" aria-label="Skift tema">
+      <span class="toggle-icon" aria-hidden="true"></span>
+      <span class="toggle-label">Tema</span>
+    </button>
+  </header>
+
+  <main>
+    <a class="back-link" href="../index.html">Tilbage til forsiden</a>
+    <article class="recipe-article">
+      <header class="recipe-hero">
+        <p class="recipe-category" id="recipe-category">Opskrift</p>
+        <h1 id="recipe-title">Magtfuld opskrift</h1>
+        <p class="recipe-intro" id="recipe-intro">
+          Opsummering af opskriften vises her, når indholdet er indlæst.
+        </p>
+        <ul class="recipe-highlights" id="recipe-highlights" aria-label="Højdepunkter"></ul>
+        <dl class="recipe-meta" id="recipe-meta"></dl>
+      </header>
+      <section class="recipe-content" id="recipe-content">
+        <p class="recipe-loading">Indlæser opskrift …</p>
+      </section>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p>Lavet med kærlighed til god mad og præcision i køkkenet.</p>
+  </footer>
+
+  <script>
+    window.BMRecipeConfig = {
+      manifestPath: './manifest.json'
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js" integrity="sha384-5Efrlq3hNZu5o3WZO4jaCPIrF7qYoMd5XRjYhLmAYfRsB2ijSvENnMWOwDPI06qx" crossorigin="anonymous"></script>
+  <script src="../assets/theme.js" defer></script>
+  <script src="../assets/recipe.js" defer></script>
+</body>
+</html>
