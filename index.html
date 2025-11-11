@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="da" data-theme="auto">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brandsborgs Magtfulde Opskrifter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <span class="logo" aria-hidden="true">🍽️</span>
+      <div>
+        <p class="brand-title">Brandsborgs Magtfulde Opskrifter</p>
+        <p class="brand-subtitle">En personlig samling af favoritter</p>
+      </div>
+    </div>
+    <button class="theme-toggle" type="button" aria-label="Skift tema">
+      <span class="toggle-icon" aria-hidden="true"></span>
+      <span class="toggle-label">Tema</span>
+    </button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-inner">
+        <h1>Min digitale kogebog</h1>
+        <p>
+          Velkommen til min samling af opskrifter, finpudset gennem utallige timer i køkkenet.
+          Her finder du mine absolutte favoritter – lige til at lave igen og igen og dele med venner.
+        </p>
+        <a class="cta" href="#opskrifter">Gå til opskrifterne</a>
+      </div>
+      <div class="hero-card">
+        <p class="hero-note">Tip</p>
+        <p>Tryk på ingredienserne, når du handler. Så bliver de streget ud automatisk.</p>
+      </div>
+    </section>
+
+    <section id="opskrifter" class="recipe-grid" aria-labelledby="opskriftseks-title">
+      <div class="section-header">
+        <h2 id="opskriftseks-title">Tre magtfulde favoritter</h2>
+        <p>Fra langsom sous vide til boblende lasagne og frisk sodavand.</p>
+      </div>
+      <div class="grid">
+        <article class="recipe-card">
+          <span class="category">Langtid</span>
+          <h3>Konfiteret andelår sous vide</h3>
+          <p>Silkeblødt kød og sprødt skind – hele processen forklaret trin for trin.</p>
+          <a class="link" href="opskrifter/konfiteret-andelaar-sousvide.html">Se opskriften</a>
+        </article>
+        <article class="recipe-card">
+          <span class="category">Komfort</span>
+          <h3>Lasagne med bolognese og bechamel</h3>
+          <p>Lag på lag af umami, silkeblød sauce og sprød panko på toppen.</p>
+          <a class="link" href="opskrifter/lasagne.html">Se opskriften</a>
+        </article>
+        <article class="recipe-card">
+          <span class="category">Frisk</span>
+          <h3>Mynte-lime sodavand</h3>
+          <p>Ebeltoft-inspireret sodavand på 5 liter – perfekt til fest og hverdag.</p>
+          <a class="link" href="opskrifter/mynte-lime-sodavand.html">Se opskriften</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="about">
+      <div class="about-inner">
+        <h2>Hvorfor jeg deler</h2>
+        <p>
+          Disse opskrifter er skabt til mit eget køkken og afprøvet igen og igen. Ved at dele dem her, kan jeg nemt
+          sende dem til venner, og du kan følge samme trin uden at mangle et eneste trick.
+        </p>
+        <p>
+          Siden husker både tema og hvilke ingredienser du har krydset af, så du kan handle ind, tage en pause og vende
+          tilbage uden at miste overblikket.
+        </p>
+      </div>
+      <div class="about-card">
+        <h3>Black belt tricks</h3>
+        <ul>
+          <li>Auto mørkt/lyst tema baseret på systemet – og manuel toggle.</li>
+          <li>Responsive kortlayout med smart typografi via CSS <code>clamp()</code>.</li>
+          <li>Ingrediensliste der husker dine valg i browseren.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Lavet med kærlighed til god mad og præcision i køkkenet.</p>
+  </footer>
+
+  <script src="assets/theme.js" defer></script>
+</body>
+</html>
