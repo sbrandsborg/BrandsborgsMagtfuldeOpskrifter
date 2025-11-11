@@ -1,5 +1,23 @@
-# Mynte-lime sodavand (Ebeltoft-inspireret) – 5 liter
-
+---
+{
+  "slug": "mynte-lime-sodavand",
+  "title": "Mynte-lime sodavand",
+  "subtitle": "Ebeltoft-inspireret sodavand på fem liter",
+  "description": "Frisk, perlende sodavand med masser af mynte, syrlig lime og balanceret sødme.",
+  "category": "Frisk",
+  "heroEmoji": "🥤",
+  "highlights": [
+    "🍃 140 g frisk mynte",
+    "🍋 500 ml limesaft",
+    "💧 5 liter klar til tap"
+  ],
+  "meta": [
+    { "icon": "⏱️", "label": "Tid", "value": "45 minutter" },
+    { "icon": "🧊", "label": "Servering", "value": "Iskold og perlende" },
+    { "icon": "🥂", "label": "Anledninger", "value": "Fester & hverdagsforkælelse" }
+  ],
+  "intro": "Bryg din egen sodavand med intens mynte, syrlig lime og masser af bobler – perfekt til store selskaber."
+}
 ---
 
 ## 🧾 Ingredienser
@@ -15,27 +33,26 @@
 ## 👨‍🍳 Fremgangsmåde trin for trin
 
 ### 1. Forbered mynte og lav ekstrakt
-- Skyl mynten grundigt under koldt vand.
-- Knus den let for at frigive smag.
-- Kog 500 ml vand og tilsæt den knuste mynte.
-- Lad det småkoge i 1 minut.
-- Tilsæt sukkeret og rør rundt, indtil det er helt opløst.
-- Sluk for varmen og lad trække med låg i 10–15 minutter.
-- Si mynten fra og gem væsken.
+1. Skyl mynten grundigt under koldt vand.
+2. Knus den let for at frigive smag.
+3. Kog vandet og tilsæt den knuste mynte.
+4. Lad det småkoge i 1 minut.
+5. Tilsæt sukkeret og rør rundt, indtil det er helt opløst.
+6. Sluk for varmen og lad trække med låg i 10–15 minutter.
+7. Si mynten fra og gem væsken.
 
 ### 2. Bland sodavanden
-- Hæld mynte-/sukkerblandingen i en stor beholder.
-- Tilsæt limesaften.
-- Fyld op med koldt vand, så den samlede mængde er præcis 5 liter.
+1. Hæld mynte-/sukkerblandingen i en stor beholder.
+2. Tilsæt limesaften.
+3. Fyld op med koldt vand, så den samlede mængde er præcis 5 liter.
 
 ### 3. Køl og karbonér
-- Køl blandingen ned til ca. 4 °C.
-- Overfør til sodavandstank og karbonér ved 2,5–3 bar i mindst 24 timer.
-- Ryst gerne tanken et par gange de første timer for hurtigere karbonering.
+1. Køl blandingen ned til ca. 4 °C.
+2. Overfør til sodavandstank og karbonér ved 2,5–3 bar i mindst 24 timer.
+3. Ryst gerne tanken et par gange de første timer for hurtigere karbonering.
 
 ---
 
 ## 🗂 Versionering
 Denne opskrift er dokumenteret til repository `BrandsborgsMagtfuldeOpskrifter`.
 Du kan versionere med Git tags (fx `v1.0-mynte-lime-sodavand`).
-

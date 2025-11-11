@@ -45,25 +45,8 @@
         <h2 id="opskriftseks-title">Tre magtfulde favoritter</h2>
         <p>Fra langsom sous vide til boblende lasagne og frisk sodavand.</p>
       </div>
-      <div class="grid">
-        <article class="recipe-card">
-          <span class="category">Langtid</span>
-          <h3>Konfiteret andelår sous vide</h3>
-          <p>Silkeblødt kød og sprødt skind – hele processen forklaret trin for trin.</p>
-          <a class="link" href="opskrifter/konfiteret-andelaar-sousvide.html">Se opskriften</a>
-        </article>
-        <article class="recipe-card">
-          <span class="category">Komfort</span>
-          <h3>Lasagne med bolognese og bechamel</h3>
-          <p>Lag på lag af umami, silkeblød sauce og sprød panko på toppen.</p>
-          <a class="link" href="opskrifter/lasagne.html">Se opskriften</a>
-        </article>
-        <article class="recipe-card">
-          <span class="category">Frisk</span>
-          <h3>Mynte-lime sodavand</h3>
-          <p>Ebeltoft-inspireret sodavand på 5 liter – perfekt til fest og hverdag.</p>
-          <a class="link" href="opskrifter/mynte-lime-sodavand.html">Se opskriften</a>
-        </article>
+      <div class="grid" id="recipe-grid" data-recipes-grid>
+        <p class="loading" data-recipes-loading>Indlæser opskrifter …</p>
       </div>
     </section>
 
@@ -94,6 +77,12 @@
     <p>Lavet med kærlighed til god mad og præcision i køkkenet.</p>
   </footer>
 
+  <script>
+    window.BMRecipeConfig = {
+      manifestPath: 'opskrifter/manifest.json'
+    };
+  </script>
+  <script src="assets/index.js" defer></script>
   <script src="assets/theme.js" defer></script>
 </body>
 </html>
