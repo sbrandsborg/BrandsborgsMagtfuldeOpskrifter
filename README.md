@@ -3,6 +3,10 @@
 Dette repository indeholder en samling af mine favoritopskrifter.
 Hver opskrift ligger i mappen `opskrifter` som Markdown med JSON front matter og versioneres løbende med Git.
 
+## Live
+
+- https://sbrandsborg.github.io/BrandsborgsMagtfuldeOpskrifter/
+
 ## Sådan kommer du i gang
 1. Klon dette repo.
 2. Tag et kig i mappen `opskrifter` for at se de seneste opskrifter.
