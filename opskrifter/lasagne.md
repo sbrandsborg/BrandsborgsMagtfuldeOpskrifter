@@ -132,6 +132,3 @@
 
 ---
 
-## 🗂 Versionering
-Denne opskrift er dokumenteret til repository `BrandsborgsMagtfuldeOpskrifter`.
-Du kan versionere med Git tags (fx `v1.0-lasagne`).
