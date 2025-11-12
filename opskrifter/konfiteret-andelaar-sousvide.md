@@ -1,7 +1,7 @@
 ---
 {
   "slug": "konfiteret-andelaar-sousvide",
-  "title": "Konfiteret andelår sous vide",
+  "title": "Konfiteret andelår – jule edition sous vide",
   "subtitle": "Jule edition med efterårs- og julesmage",
   "description": "Silkeblødt andekød med efterårs- og julesmage, tilberedt i krydderet fedt og afsluttet med sprødt skind.",
   "category": "Langtid",

@@ -1,7 +1,7 @@
 [
   {
     "slug": "konfiteret-andelaar-sousvide",
-    "title": "Konfiteret andelår sous vide",
+    "title": "Konfiteret andelår – jule edition sous vide",
     "category": "Langtid",
     "description": "Silkeblødt kød og sprødt skind – jule edition med efterårs- og julesmage.",
     "accent": "🦆",
@@ -22,5 +22,13 @@
     "description": "Ebeltoft-inspireret sodavand på fem liter – perfekt til fest og hverdag.",
     "accent": "🥤",
     "url": "opskrifter/opskrift.html?id=mynte-lime-sodavand"
+  },
+  {
+    "slug": "smorklar-bordbrod",
+    "title": "Smørklar bordbrød til deling",
+    "category": "Tilbehør",
+    "description": "Luftigt grydebrød med sprød skorpe, skabt til at blive serveret med smør ved bordet.",
+    "accent": "🥖",
+    "url": "opskrifter/opskrift.html?id=smorklar-bordbrod"
   }
 ]
