@@ -3,6 +3,8 @@
   const slug = params.get('id');
   const config = window.BMRecipeConfig || {};
   const manifestPath = config.manifestPath || './manifest.json';
+  const inlineManifest = Array.isArray(config.inlineManifest) ? config.inlineManifest : null;
+  const isFileProtocol = window.location.protocol === 'file:';
 
   const categoryEl = document.getElementById('recipe-category');
   const titleEl = document.getElementById('recipe-title');
@@ -130,13 +132,17 @@
   };
 
   const fetchManifest = async () => {
+    if (isFileProtocol && inlineManifest?.length) {
+      return inlineManifest;
+    }
     try {
       const response = await fetch(manifestPath);
       if (!response.ok) throw new Error('Manifest kunne ikke indlæses');
-      return response.json();
+      const data = await response.json();
+      return Array.isArray(data) ? data : inlineManifest ?? [];
     } catch (error) {
       console.warn('Kunne ikke hente manifest', error);
-      return [];
+      return inlineManifest ?? [];
     }
   };
 
@@ -175,7 +181,11 @@
       hydrateRecipe(enrichedAttributes, body);
     } catch (error) {
       console.error('Opskriften kunne ikke indlæses', error);
-      renderError('Ups! Vi kunne ikke indlæse opskriften.');
+      const message =
+        isFileProtocol
+          ? 'Ups! Vi kunne ikke indlæse opskriften direkte fra filsystemet. Åbn siden via en lokal server, f.eks. "python -m http.server".'
+          : 'Ups! Vi kunne ikke indlæse opskriften.';
+      renderError(message);
     }
   };
 

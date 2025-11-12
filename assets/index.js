@@ -1,6 +1,8 @@
 (() => {
   const config = window.BMRecipeConfig || {};
   const manifestPath = config.manifestPath || 'opskrifter/manifest.json';
+  const inlineManifest = Array.isArray(config.inlineManifest) ? config.inlineManifest : null;
+  const isFileProtocol = window.location.protocol === 'file:';
   const grid = document.querySelector('[data-recipes-grid]');
   const loading = document.querySelector('[data-recipes-loading]');
 
@@ -32,9 +34,19 @@
     });
   };
 
-  const load = async () => {
+  if (inlineManifest?.length) {
+    renderRecipes(inlineManifest);
     if (loading) {
+      loading.hidden = true;
+    }
+  }
+
+  const load = async () => {
+    if (loading && !inlineManifest?.length) {
       loading.hidden = false;
+    }
+    if (isFileProtocol && inlineManifest?.length) {
+      return;
     }
     try {
       const response = await fetch(manifestPath);
@@ -43,7 +55,9 @@
       renderRecipes(data);
     } catch (error) {
       console.error('Opskrifterne kunne ikke hentes', error);
-      renderRecipes([]);
+      if (!inlineManifest?.length) {
+        renderRecipes([]);
+      }
     } finally {
       if (loading) {
         loading.hidden = true;

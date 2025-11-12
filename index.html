@@ -78,8 +78,36 @@
   </footer>
 
   <script>
+    // Inline manifest fungerer som fallback, når siden åbnes direkte fra filsystemet.
     window.BMRecipeConfig = {
-      manifestPath: 'opskrifter/manifest.json'
+      manifestPath: 'opskrifter/manifest.json',
+      inlineManifest: [
+        {
+          slug: 'konfiteret-andelaar-sousvide',
+          title: 'Konfiteret andelår sous vide',
+          category: 'Langtid',
+          description:
+            'Silkeblødt kød og sprødt skind – hele processen forklaret trin for trin.',
+          accent: '🦆',
+          url: 'opskrift.html?id=konfiteret-andelaar-sousvide'
+        },
+        {
+          slug: 'lasagne',
+          title: 'Lasagne med bolognese, bechamel og panko',
+          category: 'Komfort',
+          description: 'Lag på lag af umami, silkeblød sauce og sprød panko på toppen.',
+          accent: '🍝',
+          url: 'opskrift.html?id=lasagne'
+        },
+        {
+          slug: 'mynte-lime-sodavand',
+          title: 'Mynte-lime sodavand',
+          category: 'Frisk',
+          description: 'Ebeltoft-inspireret sodavand på fem liter – perfekt til fest og hverdag.',
+          accent: '🥤',
+          url: 'opskrift.html?id=mynte-lime-sodavand'
+        }
+      ]
     };
   </script>
   <script src="assets/index.js" defer></script>
