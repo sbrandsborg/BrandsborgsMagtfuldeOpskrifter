@@ -100,6 +100,27 @@
     });
   };
 
+  const escapeHtml = (value = '') =>
+    value
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+
+  const renderMarkdown = (markdownBody = '') => {
+    const trimmed = markdownBody.trim();
+    if (window.marked?.parse) {
+      return window.marked.parse(trimmed);
+    }
+
+    console.warn('Marked kunne ikke indlæses – viser opskriften som rå tekst.');
+    return trimmed
+      .split(/\n{2,}/)
+      .map((block) => `<p>${escapeHtml(block).replace(/\n/g, '<br />')}</p>`)
+      .join('');
+  };
+
   const hydrateRecipe = (attributes, markdownBody) => {
     const {
       title = 'Opskrift',
@@ -120,9 +141,14 @@
     renderHighlights(highlights);
     renderMeta(meta);
 
-    const html = window.marked.parse(markdownBody.trim());
+    const html = renderMarkdown(markdownBody);
     contentEl.innerHTML = html;
-    postProcessContent(contentEl);
+
+    if (window.marked?.parse) {
+      postProcessContent(contentEl);
+    } else {
+      contentEl.classList.add('recipe-content--fallback');
+    }
 
     const recipeId = attributes.slug || slug;
     if (recipeId) {
