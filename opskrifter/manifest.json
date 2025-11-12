@@ -5,7 +5,7 @@
     "category": "Langtid",
     "description": "Silkeblødt kød og sprødt skind – hele processen forklaret trin for trin.",
     "accent": "🦆",
-    "url": "opskrift.html?id=konfiteret-andelaar-sousvide"
+    "url": "opskrifter/opskrift.html?id=konfiteret-andelaar-sousvide"
   },
   {
     "slug": "lasagne",
@@ -13,7 +13,7 @@
     "category": "Komfort",
     "description": "Lag på lag af umami, silkeblød sauce og sprød panko på toppen.",
     "accent": "🍝",
-    "url": "opskrift.html?id=lasagne"
+    "url": "opskrifter/opskrift.html?id=lasagne"
   },
   {
     "slug": "mynte-lime-sodavand",
@@ -21,6 +21,6 @@
     "category": "Frisk",
     "description": "Ebeltoft-inspireret sodavand på fem liter – perfekt til fest og hverdag.",
     "accent": "🥤",
-    "url": "opskrift.html?id=mynte-lime-sodavand"
+    "url": "opskrifter/opskrift.html?id=mynte-lime-sodavand"
   }
 ]
