@@ -13,6 +13,7 @@
   const highlightsEl = document.getElementById('recipe-highlights');
   const metaEl = document.getElementById('recipe-meta');
   const contentEl = document.getElementById('recipe-content');
+  const keepAwakeButton = document.getElementById('keep-awake-toggle');
 
   const renderError = (message) => {
     contentEl.innerHTML = '';
@@ -70,7 +71,106 @@
     });
   };
 
-  const postProcessContent = (container) => {
+  const StepProgress = (() => {
+    const PREFIX = 'bm-step-progress:';
+
+    const load = (recipeId) => {
+      if (!recipeId) return [];
+      try {
+        const stored = localStorage.getItem(`${PREFIX}${recipeId}`);
+        if (!stored) return [];
+        const parsed = JSON.parse(stored);
+        return Array.isArray(parsed) ? parsed : [];
+      } catch (error) {
+        console.warn('Kunne ikke læse trinstatus', error);
+        return [];
+      }
+    };
+
+    const save = (recipeId, data) => {
+      if (!recipeId) return;
+      try {
+        localStorage.setItem(`${PREFIX}${recipeId}`, JSON.stringify(data));
+      } catch (error) {
+        console.warn('Kunne ikke gemme trinstatus', error);
+      }
+    };
+
+    return { load, save };
+  })();
+
+  const persistStepProgress = (recipeId, stepLists) => {
+    if (!recipeId || !stepLists?.length) return;
+    const state = stepLists.map((list) =>
+      Array.from(list.querySelectorAll('.step-checkbox')).map((checkbox) => checkbox.checked)
+    );
+    StepProgress.save(recipeId, state);
+  };
+
+  const enhanceStepLists = (container, recipeId) => {
+    const stepLists = Array.from(container.querySelectorAll('ol.steps'));
+    if (!stepLists.length) return;
+
+    const storedState = recipeId ? StepProgress.load(recipeId) : [];
+
+    stepLists.forEach((listEl, listIndex) => {
+      const savedSteps = Array.isArray(storedState?.[listIndex]) ? storedState[listIndex] : [];
+      Array.from(listEl.children).forEach((item, itemIndex) => {
+        if (!(item instanceof HTMLElement)) return;
+        if (item.dataset.stepsEnhanced === 'true') return;
+
+        item.dataset.stepsEnhanced = 'true';
+
+        const nestedLists = [];
+        let child = item.firstChild;
+        while (child) {
+          const next = child.nextSibling;
+          if (child.nodeType === 1 && ['OL', 'UL'].includes(child.tagName)) {
+            nestedLists.push(child);
+            item.removeChild(child);
+          }
+          child = next;
+        }
+
+        const label = document.createElement('label');
+        label.className = 'step-label';
+
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.className = 'step-checkbox';
+
+        const text = document.createElement('div');
+        text.className = 'step-text';
+        const fragment = document.createDocumentFragment();
+        while (item.firstChild) {
+          fragment.appendChild(item.firstChild);
+        }
+        text.appendChild(fragment);
+
+        const isChecked = !!savedSteps[itemIndex];
+        checkbox.checked = isChecked;
+        item.classList.toggle('is-checked', isChecked);
+
+        label.appendChild(checkbox);
+        label.appendChild(text);
+        item.appendChild(label);
+        nestedLists.forEach((nested) => item.appendChild(nested));
+
+        checkbox.addEventListener('change', () => {
+          item.classList.toggle('is-checked', checkbox.checked);
+          if (recipeId) {
+            persistStepProgress(recipeId, stepLists);
+          }
+        });
+      });
+    });
+
+    if (recipeId) {
+      persistStepProgress(recipeId, stepLists);
+    }
+  };
+
+  const postProcessContent = (container, recipeId) => {
     const headings = container.querySelectorAll('h2, h3');
     headings.forEach((heading) => {
       heading.classList.add(heading.tagName === 'H2' ? 'recipe-section-title' : 'recipe-subtitle');
@@ -97,6 +197,78 @@
 
     container.querySelectorAll('table').forEach((table) => {
       table.classList.add('recipe-table');
+    });
+
+    enhanceStepLists(container, recipeId);
+  };
+
+  const initWakeLockToggle = () => {
+    if (!keepAwakeButton) return;
+
+    const supported = 'wakeLock' in navigator;
+    if (!supported) {
+      keepAwakeButton.disabled = true;
+      keepAwakeButton.setAttribute('aria-disabled', 'true');
+      keepAwakeButton.textContent = 'Skærmlås ikke understøttet';
+      return;
+    }
+
+    let wakeLockSentinel = null;
+    let shouldHold = false;
+
+    const updateButtonState = (isActive) => {
+      keepAwakeButton.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+      keepAwakeButton.classList.toggle('is-active', isActive);
+      keepAwakeButton.textContent = isActive ? 'Skærmen holdes tændt' : 'Hold skærmen tændt';
+    };
+
+    updateButtonState(false);
+
+    const requestWakeLock = async () => {
+      try {
+        wakeLockSentinel = await navigator.wakeLock.request('screen');
+        wakeLockSentinel.addEventListener('release', handleRelease);
+        updateButtonState(true);
+      } catch (error) {
+        console.warn('Kunne ikke aktivere skærmlås', error);
+        shouldHold = false;
+        updateButtonState(false);
+      }
+    };
+
+    async function handleRelease() {
+      wakeLockSentinel = null;
+      if (shouldHold && document.visibilityState === 'visible') {
+        requestWakeLock();
+      } else {
+        shouldHold = false;
+        updateButtonState(false);
+      }
+    }
+
+    const releaseWakeLock = async () => {
+      if (!wakeLockSentinel) return;
+      try {
+        await wakeLockSentinel.release();
+      } catch (error) {
+        console.warn('Kunne ikke frigive skærmlås', error);
+      }
+    };
+
+    keepAwakeButton.addEventListener('click', async () => {
+      if (wakeLockSentinel) {
+        shouldHold = false;
+        await releaseWakeLock();
+      } else {
+        shouldHold = true;
+        await requestWakeLock();
+      }
+    });
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible' && shouldHold && !wakeLockSentinel) {
+        requestWakeLock();
+      }
     });
   };
 
@@ -133,6 +305,14 @@
       intro
     } = attributes;
 
+    const recipeId = attributes.slug || slug;
+
+    if (recipeId) {
+      document.body.dataset.recipeId = recipeId;
+    } else {
+      delete document.body.dataset.recipeId;
+    }
+
     document.title = `${title} · Brandsborgs Magtfulde Opskrifter`;
     titleEl.textContent = heroEmoji ? `${heroEmoji} ${title}` : title;
     categoryEl.textContent = category ?? 'Opskrift';
@@ -143,16 +323,15 @@
 
     const html = renderMarkdown(markdownBody);
     contentEl.innerHTML = html;
+    contentEl.classList.remove('recipe-content--fallback');
 
     if (window.marked?.parse) {
-      postProcessContent(contentEl);
+      postProcessContent(contentEl, recipeId);
     } else {
       contentEl.classList.add('recipe-content--fallback');
     }
 
-    const recipeId = attributes.slug || slug;
     if (recipeId) {
-      document.body.dataset.recipeId = recipeId;
       window.BMRecipeUtils?.initIngredients?.(recipeId);
     }
   };
@@ -215,5 +394,6 @@
     }
   };
 
+  initWakeLockToggle();
   loadRecipe();
 })();

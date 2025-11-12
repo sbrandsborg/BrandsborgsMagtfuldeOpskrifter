@@ -42,5 +42,3 @@
 
 ---
 
-## 🗂 Versionering
-Skriv evt. note om versionsstyring.

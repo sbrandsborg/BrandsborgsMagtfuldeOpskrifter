@@ -400,6 +400,56 @@ main {
   display: none;
 }
 
+.recipe-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 0.4rem;
+}
+
+.keep-awake-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1.2rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
+  color: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--transition), border-color var(--transition), color var(--transition),
+    box-shadow var(--transition), transform var(--transition);
+}
+
+.keep-awake-toggle::before {
+  content: '📱';
+}
+
+.keep-awake-toggle:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-elevated);
+}
+
+.keep-awake-toggle.is-active {
+  background: color-mix(in srgb, var(--accent) 18%, var(--bg-elevated));
+  border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
+  color: var(--accent);
+  box-shadow: var(--shadow-elevated);
+}
+
+.keep-awake-toggle:disabled,
+.keep-awake-toggle[aria-disabled='true'] {
+  cursor: not-allowed;
+  opacity: 0.6;
+  box-shadow: none;
+}
+
+.keep-awake-toggle:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--accent) 45%, transparent);
+  outline-offset: 2px;
+}
+
 .recipe-content {
   display: grid;
   gap: var(--space-md);
@@ -517,6 +567,8 @@ main {
   border: 1px solid var(--border);
   background: var(--bg-elevated);
   line-height: 1.65;
+  transition: background var(--transition), border-color var(--transition), color var(--transition),
+    transform var(--transition);
 }
 
 .steps li::before {
@@ -534,6 +586,50 @@ main {
   font-weight: 600;
   display: grid;
   place-content: center;
+}
+
+.steps li:hover {
+  transform: translateY(-1px);
+}
+
+.steps li:focus-within {
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 35%, transparent);
+}
+
+.step-label {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  cursor: pointer;
+}
+
+.step-text {
+  flex: 1;
+  display: block;
+}
+
+.step-checkbox {
+  width: 1.2rem;
+  height: 1.2rem;
+  margin-top: 0.35rem;
+  flex-shrink: 0;
+  accent-color: var(--accent);
+  border-radius: 6px;
+}
+
+.steps li.is-checked {
+  background: color-mix(in srgb, var(--accent-soft) 60%, var(--bg-elevated));
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
+}
+
+.steps li.is-checked::before {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.steps li.is-checked .step-text {
+  color: var(--text-muted);
+  text-decoration: line-through;
 }
 
 .tip-list {
