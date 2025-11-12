@@ -2,8 +2,8 @@
 {
   "slug": "konfiteret-andelaar-sousvide",
   "title": "Konfiteret andelår sous vide",
-  "subtitle": "Perfekt mørt kød og knasende skind",
-  "description": "Silkeblødt andekød tilberedt i krydderet fedt og afsluttet med sprødt skind.",
+  "subtitle": "Jule edition med efterårs- og julesmage",
+  "description": "Silkeblødt andekød med efterårs- og julesmage, tilberedt i krydderet fedt og afsluttet med sprødt skind.",
   "category": "Langtid",
   "heroEmoji": "🦆",
   "highlights": [
@@ -16,7 +16,7 @@
     { "icon": "🌡️", "label": "Temperatur", "value": "68 °C" },
     { "icon": "🍽️", "label": "Serverer", "value": "2 personer" }
   ],
-  "intro": "Denne metode giver dig møre andelår med dyb krydderi-smag, og en afsluttende sprød stegning giver den perfekte tekstur."
+  "intro": "Denne jule edition giver dig møre andelår med efterårs- og julesmage, og en afsluttende sprød stegning giver den perfekte tekstur."
 }
 ---
 
