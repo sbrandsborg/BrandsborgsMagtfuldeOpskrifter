@@ -1,4 +1,4 @@
-# BrandsborgsMagtfuldeOpskrifter
+# BrandsborgsMagtfuldeOpskrifter 
 
 Dette repository indeholder en samling af mine favoritopskrifter.
 Hver opskrift ligger i mappen `opskrifter` som Markdown med JSON front matter og versioneres løbende med Git.
