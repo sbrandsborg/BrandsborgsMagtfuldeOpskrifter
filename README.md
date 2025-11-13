@@ -22,4 +22,4 @@ Hver opskrift ligger i mappen `opskrifter` som Markdown med JSON front matter.
 - [Lasagne med Bolognese, Bechamel og Panko](opskrifter/lasagne.md)
 - [Mynte-lime sodavand (Ebeltoft-inspireret) – 5 liter](opskrifter/mynte-lime-sodavand.md)
 - [Konfiteret andelår – jule edition sous vide](opskrifter/konfiteret-andelaar-sousvide.md)
-- [Smørklar bordbrød til deling](opskrifter/smorklar-bordbrod.md)
+- [Smørklar bordbrød](opskrifter/smorklar-bordbrod.md)

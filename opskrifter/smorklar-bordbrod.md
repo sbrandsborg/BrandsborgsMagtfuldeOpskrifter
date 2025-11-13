@@ -1,7 +1,7 @@
 ---
 {
   "slug": "smorklar-bordbrod",
-  "title": "Smørklar bordbrød til deling",
+  "title": "Smørklar bordbrød",
   "subtitle": "Luftigt grydebrød, perfekt med pisket smør ved siden af",
   "description": "Et enkelt brød med sprød skorpe og fugtig krumme – ideelt som tilbehør til en hovedret med godt smør.",
   "category": "Tilbehør",
