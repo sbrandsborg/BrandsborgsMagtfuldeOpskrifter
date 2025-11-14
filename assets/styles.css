@@ -197,6 +197,26 @@ main {
   color: var(--accent);
 }
 
+.kitchen-rules {
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 2.4rem);
+  padding: clamp(2rem, 5vw, 3rem);
+  border-radius: var(--radius-lg);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-elevated);
+}
+
+.rules-list {
+  margin: 0;
+  padding-left: 1.2rem;
+  display: grid;
+  gap: 0.6rem;
+  font-size: clamp(1rem, 2vw, 1.1rem);
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
 .section-header {
   max-width: 52ch;
   display: grid;
