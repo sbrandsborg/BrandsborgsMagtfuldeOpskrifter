@@ -30,5 +30,13 @@
     "description": "Luftigt grydebrød med sprød skorpe, skabt til at blive serveret med smør ved bordet.",
     "accent": "🥖",
     "url": "opskrifter/opskrift.html?id=smorklar-bordbrod"
+  },
+  {
+    "slug": "tarteletter-med-hons-i-asparges",
+    "title": "Tarteletter med høns i asparges",
+    "category": "Komfort",
+    "description": "Silkeblød sauce, saftig kylling og sprøde toppings i varme tarteletter.",
+    "accent": "🥧",
+    "url": "opskrifter/opskrift.html?id=tarteletter-med-hons-i-asparges"
   }
 ]
